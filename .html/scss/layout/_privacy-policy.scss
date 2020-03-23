@@ -1,0 +1,142 @@
+.privacy-policy {
+	border-top: 150px solid #000851;
+	background: #0D0D0D;
+	background-image: url(../img/rules-decor.png);
+	background-repeat: no-repeat;
+	padding-top: 150px;
+	padding-bottom: 150px;
+	position: relative;
+	&:before {
+		content: '';
+		width: 100%;
+		height: 1px;
+		background-color: #11CFE7;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	&__cnt {
+		background: #00052E;
+		border: 1px solid #11CFE7;
+		box-sizing: border-box;
+		padding: 70px 100px 85px 100px;
+		h1 {
+			font-weight: 800;
+			font-size: 36px;
+			line-height: 43px;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+			color: #FF14A1;
+			background: none;
+			-webkit-text-fill-color: #FF14A1;
+			margin-bottom: 34px;
+		}
+		p {
+			line-height: 22px;
+			margin-bottom: 22px;
+		}
+		h2 {
+			padding: 0;
+			font-weight: bold;
+			font-size: 24px;
+			line-height: 29px;
+			color: #11CFE7;
+			position: relative;
+			counter-increment: section;
+			margin-bottom: 21px;
+			text-transform: none;
+			text-align: left;
+			&:before {
+				content: counter(section)'.';
+				font-weight: bold;
+				font-size: 24px;
+				line-height: 29px;
+				color: #11CFE7;
+				padding-right: 7px;
+			}
+		}
+		ol {
+			counter-reset: item2; 
+			li {
+				counter-increment: item2; 
+				&:before {
+					content: counter(section) '.' counter(item2)'.';
+					padding-right: 5px;
+				}
+			}
+		}
+		li {
+			margin-bottom: 0;
+			line-height: 22px;
+		}
+		ul {
+			margin-bottom: 20px;
+			li {
+				&:before {
+					content: '-';
+					padding-right: 5px;
+				}
+			}
+		}
+	}
+	&__items {
+		counter-reset: section; 
+	}
+	&__item {
+		margin-bottom: 20px; 
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.privacy-policy {
+		padding-top: 50px;
+		padding-bottom: 50px;
+		
+		&__cnt {
+			padding: 30px;
+			margin-top: 90px;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.privacy-policy {
+		border: none;
+		&__cnt {
+			padding: 30px 15px;
+			margin-top: 0;
+			h1 {
+				font-size: 28px;
+				line-height: 35px;
+				margin-bottom: 20px;
+			}
+		}
+		.wrapper {
+			padding: 0 15px;
+		}
+	}
+}
+
+@media screen and (max-width: 578px) {
+	.privacy-policy {
+		&__cnt {
+			h1 {
+				font-size: 18px;
+				line-height: 22px;
+			}
+			h2 {
+				font-size: 16px;
+				line-height: 20px;
+			}
+			p, li {
+				font-size: 14px;
+				line-height: 18px;
+			}
+			p {
+				margin-bottom: 15px;
+			}
+		}
+	}
+}

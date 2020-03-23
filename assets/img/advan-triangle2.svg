@@ -1,0 +1,39 @@
+<svg width="325" height="383" viewBox="0 0 325 383" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="188" height="260" transform="matrix(-1 0 0 1 316 123)" fill="url(#pattern0)"/>
+<path d="M147.184 142.5V213.3L297.184 363.3V288.8L147.184 142.5Z" fill="#000851"/>
+<path d="M147.184 142.5V213.3L297.184 363.3V288.8L147.184 142.5Z" stroke="#FF14A1" stroke-width="2" stroke-miterlimit="10"/>
+<path d="M284.684 334.9L158.884 209V167.6" stroke="#2443C6" stroke-width="0.5" stroke-miterlimit="10"/>
+<rect width="304" height="304" transform="matrix(-1 0 0 1 304 16)" fill="url(#pattern1)"/>
+<path d="M284.684 300.2L19.5836 35.1001H284.684V300.2Z" fill="#000851"/>
+<path d="M284.684 300.2L19.5836 35.1001H284.684V300.2Z" stroke="url(#paint0_linear)" stroke-width="2" stroke-miterlimit="10"/>
+<rect width="304" height="304" transform="matrix(-1 0 0 1 325 0)" fill="url(#pattern2)"/>
+<path d="M305.684 284.7L40.4836 19.5H305.684V284.7Z" fill="#000851"/>
+<path d="M305.684 284.7L40.4836 19.5H305.684V284.7Z" stroke="#FF14A1" stroke-width="2" stroke-miterlimit="10"/>
+<path d="M292.783 201.2L229.183 137.6V110.5L150.083 31.3999H292.783V201.2Z" fill="#000851" stroke="url(#paint1_linear)" stroke-miterlimit="10"/>
+<path d="M287.483 232.5L183.583 128.6V102.9L111.683 31" stroke="#2443C6" stroke-width="0.5" stroke-miterlimit="10"/>
+<path d="M282.384 211L206.484 135.1V110L173.184 76.6V69.1L142.084 38" stroke="#2443C6" stroke-width="0.5" stroke-miterlimit="10"/>
+<path d="M184.483 87.9001H177.083L129.483 40.3" stroke="#2443C6" stroke-width="0.5" stroke-miterlimit="10"/>
+<path d="M284.983 171.8L257.983 144.7V112L186.483 40.5" stroke="#2443C6" stroke-width="0.5" stroke-miterlimit="10"/>
+<path d="M227.984 82.1001H243.484L289.184 127.7" stroke="#2443C6" stroke-width="0.5" stroke-miterlimit="10"/>
+<path d="M282.384 82.1L265.184 64.9H242.184L218.984 41.8" stroke="#2443C6" stroke-width="0.5" stroke-miterlimit="10"/>
+<path d="M282.384 277.7L42.0838 37.3" stroke="#2443C6" stroke-width="0.5" stroke-miterlimit="10"/>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0"/>
+</pattern>
+<pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image1"/>
+</pattern>
+<pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image1"/>
+</pattern>
+<linearGradient id="paint0_linear" x1="151.777" y1="301.439" x2="151.777" y2="34.5654" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF14A1"/>
+</linearGradient>
+<linearGradient id="paint1_linear" x1="221.054" y1="202.385" x2="221.054" y2="30.8644" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF14A1"/>
+</linearGradient>
+<image id="image0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALwAAAEECAYAAACSp14HAAAACXBIWXMAAAsSAAALEgHS3X78AAAA"/>
+<image id="image1" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATAAAAEwCAYAAAAw+y3zAAAACXBIWXMAAAsSAAALEgHS3X78AAAA"/>
+</defs>
+</svg>

@@ -1,0 +1,13 @@
+/*
+Theme Name: Kiberteka
+Author: the SlicePlanet team
+Author URI: mailto:megabrilik@gmail.com
+Description: Kiberteka created 2020 year.
+Requires at least: WordPress 5.3.2
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: kiberteka
+Tags: one-column, flexible-header, accessibility-ready, custom-colors, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, rtl-language-support, sticky-post, threaded-comments, translation-ready
+*/
+@import "assets/css/style.css";
