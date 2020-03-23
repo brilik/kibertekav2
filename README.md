@@ -1,0 +1,1 @@
+# Kiberteka theme for  WordPress
