@@ -48,10 +48,10 @@ add_action( 'admin_menu', function () {
 /**
  * Отключаем гутенберг на определенных типах постов или страницах.
  */
-//add_filter( 'use_block_editor_for_post', 'disable_gutenberg_for_post', 10, 2 );
+add_filter( 'use_block_editor_for_post', 'disable_gutenberg_for_post', 10, 2 );
 function disable_gutenberg_for_post( $use, $post ) {
 
-	if ( $post->post_type == 'page' ) {
+	if ( get_page_template_slug() === 'templates/main-page.php' ) {
 		return false;
 	}
 
@@ -187,4 +187,34 @@ function get_array_sort_template( array $sort_array, array $needly_for_template 
 	}
 
 	return $res;
+}
+
+add_action('wp_ajax_send_form', 'send_form_ajax');
+add_action('wp_ajax_nopriv_send_form', 'send_form_ajax');
+function send_form_ajax() {
+	$tranlate = [
+		'complection' => 'Комплектация',
+		'num'         => 'Количество',
+		'time'        => 'Время с',
+		'email'       => 'Номер теелфона или почта для подтверждения',
+		'name2'       => 'Имя',
+		'form_title'  => 'Заголовок формы',
+		'club'        => 'Клуб',
+	];
+	$to       = get_field( 'email', 'options' )['to'] ?? get_option( 'admin_email ' );
+	$title    = $_POST['form_title'];
+	unset( $_POST['action'], $_POST['form_title'] );
+	$msg = '';
+	foreach ( $_POST as $key => $item ) {
+		if ( array_key_exists( $key, $tranlate ) ) {
+			$key = $tranlate[ $key ];
+		}
+		$msg .= "{$key}: {$item}\r\n";
+	}
+	if ( wp_mail( $to, $title, $msg ) ) {
+		echo "openPopup";
+	} else {
+		Debug::pr( $_POST );
+	}
+	wp_die();
 }
