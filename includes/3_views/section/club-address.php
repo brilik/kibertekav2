@@ -12,7 +12,7 @@
 				<div class="club-address__item-info">
 					<h3><?= get_field( 'preview', $item->ID )['title']; ?></h3>
 					<div class="club-address__item-detail">
-						<?php if($link = $contacts['location']): ?>
+						<?php if($link = $contacts['location']['address']): ?>
                             <ul>
                                 <li class="social-icon"><a href="<?php the_permalink($item->ID); ?>"><i class="icon-marker"></i></a></li>
                                 <li class="club-address__item-detail-text"><?= $link; ?></li>
