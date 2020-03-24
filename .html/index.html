@@ -133,28 +133,28 @@
 					<div class="clubs-content">
 						<div class="clubs-items js--clubs-items">
 							<div class="swiper-wrapper">
-								<a href="#" class="clubs-item swiper-slide">
+								<a href="img/club-item1.png" class="clubs-item swiper-slide js-fancybox">
 									<img src="img/club-item1.png"  alt="">
 								</a>
-								<a href="#" class="clubs-item swiper-slide">
+								<a href="img/club-item2.png" class="clubs-item swiper-slide js-fancybox">
 									<img src="img/club-item2.png"  alt="">
 								</a>
-								<a href="#" class="clubs-item swiper-slide">
+								<a href="img/club-item3.png" class="clubs-item swiper-slide js-fancybox">
 									<img src="img/club-item3.png"  alt="">
 								</a>
-								<a href="#" class="clubs-item swiper-slide">
+								<a href="img/club-item4.png" class="clubs-item swiper-slide js-fancybox">
 									<img src="img/club-item4.png"  alt="">
 								</a>
-								<a href="#" class="clubs-item swiper-slide">
+								<a href="img/club-item5.png" class="clubs-item swiper-slide js-fancybox">
 									<img src="img/club-item5.png"  alt="">
 								</a>
-								<a href="#" class="clubs-item swiper-slide">
+								<a href="img/club-item6.png" class="clubs-item swiper-slide js-fancybox">
 									<img src="img/club-item6.png"  alt="">
 								</a>
-								<a href="#" class="clubs-item swiper-slide">
+								<a href="img/club-item5.png" class="clubs-item swiper-slide js-fancybox">
 									<img src="img/club-item5.png"  alt="">
 								</a>
-								<a href="#" class="clubs-item swiper-slide">
+								<a href="img/club-item6.png" class="clubs-item swiper-slide js-fancybox">
 									<img src="img/club-item6.png"  alt="">
 								</a>
 							</div>
@@ -445,7 +445,7 @@
 							</a>
 							<div class="booking-content-wrap">
 								<div class="booking-content">
-									<form class="contact-form js--contact-form2">
+									<form class="contact-form js--contact-form2" autocomplete="off">
 										<h4>онлайн-бронирование</h4>
 										<div class="box-field focused-field">
 											<div class="box-field__icon">
@@ -465,12 +465,21 @@
 											<label class="box-field__label" for="input-num">Колличество</label>
 											<input class="form-control" type="text" id="input-num" name="num" required>
 										</div>
-										<div class="box-field">
+										<div class="box-field box-field__date">
+											<div class="box-field__icon">
+												<i class="icon-clock"></i>
+											</div>
+											<label class="box-field__label" for="input-date">Дата</label>
+											<input class="form-control" type="text" id="input-date" name="date" required>
+										</div>
+										<div class="box-field box-field__time">
 											<div class="box-field__icon">
 												<i class="icon-clock"></i>
 											</div>
 											<label class="box-field__label" for="input-time">Время с</label>
+											<label class="box-field__label box-field__label-to" for="input-time-to">Время до</label>
 											<input class="form-control" type="text" id="input-time" name="time" required>
+											<input class="form-control" type="text" id="input-time-to" name="time-to" required>
 										</div>
 										<div class="box-field">
 											<div class="box-field__icon">
@@ -518,6 +527,7 @@
 	<script src="js/components/jquery.maskedinput.js"></script>
 	<script src="js/components/jquery.fancybox.js"></script>
 	<script src="js/components/jquery.validate.js"></script>
+	<script src="js/components/jquery.datetimepicker.js"></script>
 	<script src="js/custom.js"></script>
 </body>
 
