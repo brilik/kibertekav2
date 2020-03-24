@@ -44,6 +44,7 @@ function ar_theme_name_scripts() {
 	wp_register_script( 'jq-maskedinput', $theme_uri . 'js/components/jquery.maskedinput.js', [], null, true );
 	wp_register_script( 'jq-fancybox', $theme_uri . 'js/components/jquery.fancybox.js', [], null, true );
 	wp_register_script( 'jq-validate', $theme_uri . 'js/components/jquery.validate.js', [], null, true );
+	wp_register_script( 'jq-datetimepicker', $theme_uri . 'js/components/jquery.datetimepicker.js', [], null, true );
 	wp_register_script( 'list', $theme_uri . 'js/components/list.min.js', [], null, true );
 	wp_register_script( 'custom', $theme_uri . 'js/custom.js', [], null, true );
 	wp_register_script( 'custom', $theme_uri . 'js/custom2.js', [], null, true );
@@ -55,6 +56,7 @@ function ar_theme_name_scripts() {
 		wp_enqueue_script( 'jq-maskedinput' );
 		wp_enqueue_script( 'jq-fancybox' );
 		wp_enqueue_script( 'jq-validate' );
+		wp_enqueue_script( 'jq-datetimepicker' );
 	} elseif ( is_404() || is_privacy_policy() ) {
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );
