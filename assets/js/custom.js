@@ -58,7 +58,7 @@ $(function () {
 	/* phone mask */
 
 	$("input[type='tel']").mask("+7 (999) 999-99-99");
-	$("input#input-time").mask("c 99:99 до 99:99");
+	// $("input#input-time").mask("c 99:99 до 99:99");
 
 	/* phone masks */
 
@@ -173,23 +173,23 @@ $(function () {
 
 	/*fancubox popup*/
 
-	// if ($('.js-fancybox').length) {
-	// 	$('.js-fancybox').fancybox({
-	// 		margin: 0,
-	// 		padding: 0,
-	// 		beforeShow: function () {
-	// 			$("html").addClass('fixed');
-	// 		},
-	// 		afterClose: function () {
-	// 			$("html").removeClass('fixed');
-	// 		}
-	// 	});
-	// };
+	if ($('.js-fancybox').length) {
+		$('.js-fancybox').fancybox({
+			margin: 0,
+			padding: 0,
+			beforeShow: function () {
+				$("html").addClass('fixed');
+			},
+			afterClose: function () {
+				$("html").removeClass('fixed');
+			}
+		});
+	};
 
-	// $('.js-fancybox-close').click(function () {
-	// 	$('.fancybox-close').click();
-	// 	return false;
-	// });
+	$('.js-fancybox-close').click(function () {
+		$('.fancybox-close').click();
+		return false;
+	});
 
 	var $popup = $('.js-popup');
 
@@ -214,8 +214,10 @@ $(function () {
 	});
 
 	$('body').on('click', function (e) {
-		if ($(e.target).closest($popup).length == 0 ) {
+		if ($(e.target).closest($popup).length == 0 && $(e.target).closest($('.xdsoft_datetimepicker')).length == 0) {
 			hideContainer();
+		} else {
+			return;
 		}
 	});
 
@@ -273,6 +275,10 @@ $(function () {
 						required: true,
 						minlength: 1
 					},
+					date: {
+						required: true,
+						minlength: 1
+					},
 					time: {
 						required: true,
 						minlength: 1
@@ -292,6 +298,10 @@ $(function () {
 						minlength: ""
 					},
 					num: {
+						required: "",
+						minlength: ""
+					},
+					date: {
 						required: "",
 						minlength: ""
 					},
@@ -317,6 +327,33 @@ $(function () {
 		})
 	};
 	/*form validation*/
+
+	
+	/* calendar */
+
+	$('#input-date').datetimepicker({
+		timepicker:false,
+		format:'d.m.yy',
+		formatDate:'d.m.yy',
+		dayOfWeekStart: 1,
+		todayButton:false,
+		lang: 'ru'
+	});
+
+	$('#input-time').datetimepicker({
+		datepicker:false,
+		format:'H:i',
+		step:30
+	});
+
+	$('#input-time-to').datetimepicker({
+		datepicker:false,
+		format:'H:i',
+		step:30
+	});
+		
+	
+	/* calendar */
 
 	/* tabs */
 	$('.library-types li a').click(function () {
@@ -384,6 +421,9 @@ $(function () {
 
 	});
 	/*list js*/
+
+
+
 });
 
 var handler = function () {
