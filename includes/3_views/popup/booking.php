@@ -52,6 +52,7 @@
 											<input class="form-control" type="text" id="input-name2" name="name2" required>
 										</div>
 										<button type="submit" class="btn">Забронировать</button>
+                                        <input type="hidden" name="form_title" value="онлайн-бронирование">
 									</form>
 									<div class="contact-form-success">
 										<i class="icon-cool"></i>

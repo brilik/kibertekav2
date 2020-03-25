@@ -5,6 +5,8 @@ $(window).on('load', function () {
 		$('body').addClass('web');
 	};
 	$('body').removeClass('loaded');
+
+    actionsForWordPress()
 });
 
 /* viewport width */
@@ -263,72 +265,9 @@ $(function () {
 			});
 		})
 	};
-	if ($('.js--contact-form2').length) {
-		$('.js--contact-form2').each(function () {
-			$(this).validate({
-				rules: {
-					complection: {
-						required: true,
-						minlength: 1
-					},
-					num: {
-						required: true,
-						minlength: 1
-					},
-					date: {
-						required: true,
-						minlength: 1
-					},
-					time: {
-						required: true,
-						minlength: 1
-					},
-					email: {
-						required: true,
-						minlength: 1
-					},
-					name2: {
-						required: true,
-						minlength: 1
-					}
-				},
-				messages: {
-					complection: {
-						required: "",
-						minlength: ""
-					},
-					num: {
-						required: "",
-						minlength: ""
-					},
-					date: {
-						required: "",
-						minlength: ""
-					},
-					time: {
-						required: "",
-						minlength: ""
-					},
-					email: {
-						required: "",
-						minlength: ""
-					},
-					name2: {
-						required: "",
-						minlength: ""
-					}
-				},
-
-				submitHandler: function (form) {
-					$('.contact-form-success').addClass('active');
-					$('.contact-form').addClass('fade');
-				}
-			});
-		})
-	};
 	/*form validation*/
 
-	
+
 	/* calendar */
 
 	$('#input-date').datetimepicker({
@@ -351,8 +290,8 @@ $(function () {
 		format:'H:i',
 		step:30
 	});
-		
-	
+
+
 	/* calendar */
 
 	/* tabs */
@@ -421,8 +360,6 @@ $(function () {
 
 	});
 	/*list js*/
-
-
 
 });
 
@@ -522,5 +459,112 @@ function getYaMap() {
 	};
 }
 
+function actionsForWordPress() {
+    copyTextBtnForForm('.js-copy-text-in-form', '#booking-modal form')
+	sendFormWithAjax()
+}
 
+function copyTextBtnForForm(selector, form) {
+    $(selector).find('a').each(function () {
+        $(this).on('click', function () {
+            var text = $(this).text()
 
+            if ($(form).find('input[name=club]'))
+                $(form).find('input[name=club]').remove()
+
+            $(form).find(':submit').after('<input type="hidden" name="club" value="' + text + '">')
+        })
+    })
+}
+
+function sendFormWithAjax() {
+    var form = $('form')
+    form.submit(function (event) {
+        event.preventDefault()
+
+        validate()
+
+        $.ajax({
+            type: "POST",
+            url: "wp-admin/admin-ajax.php",
+            data: $(this).serialize() + "&action=send_form",
+            success: function (res) {
+                form.find(":submit").attr("disabled", false)
+                if(res === 'openPopup'){
+                    // open popup success
+					$('.contact-form-success').addClass('active');
+					$('.contact-form').addClass('fade');
+                } else {
+                    console.log(res)
+                }
+            },
+            beforeSend: function () {
+                form.find(":submit").attr("disabled", true)
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+            }
+        })
+    })
+}
+
+function validate(){
+    if ($('.js--contact-form2').length) {
+        $('.js--contact-form2').each(function () {
+            $(this).validate({
+                rules: {
+                    complection: {
+                        required: true,
+                        minlength: 1
+                    },
+                    num: {
+                        required: true,
+                        minlength: 1
+                    },
+                    date: {
+                        required: true,
+                        minlength: 1
+                    },
+                    time: {
+                        required: true,
+                        minlength: 1
+                    },
+                    email: {
+                        required: true,
+                        minlength: 1
+                    },
+                    name2: {
+                        required: true,
+                        minlength: 1
+                    }
+                },
+                messages: {
+                    complection: {
+                        required: "",
+                        minlength: ""
+                    },
+                    num: {
+                        required: "",
+                        minlength: ""
+                    },
+                    date: {
+                        required: "",
+                        minlength: ""
+                    },
+                    time: {
+                        required: "",
+                        minlength: ""
+                    },
+                    email: {
+                        required: "",
+                        minlength: ""
+                    },
+                    name2: {
+                        required: "",
+                        minlength: ""
+                    }
+                },
+            });
+        })
+    };
+}

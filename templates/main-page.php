@@ -10,5 +10,5 @@ ar_the_view( 'section__about' );
 ar_the_view( 'section__finding' );
 ar_the_view( 'section__clubs' );
 ar_the_view( 'section__planning' );
-ar_the_view( 'section__club-address' );
+ar_the_view( 'section__address' );
 get_footer();

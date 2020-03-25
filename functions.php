@@ -50,7 +50,7 @@ function ar_theme_name_scripts() {
 	wp_register_script( 'custom', $theme_uri . 'js/custom2.js', [], null, true );
 	wp_enqueue_script( 'jq' );
 	wp_enqueue_script( 'jq-migrate' );
-	if ( is_home() || is_front_page() ) {
+	if ( is_home() || is_front_page() || is_singular('clubs')) {
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );
 		wp_enqueue_script( 'jq-maskedinput' );
@@ -63,6 +63,8 @@ function ar_theme_name_scripts() {
 		wp_enqueue_script( 'jq-maskedinput' );
 		wp_enqueue_script( 'jq-fancybox' );
 		wp_enqueue_script( 'custom2' );
+	}else {
+		wp_enqueue_script( 'lazyload' );
 	}
 	wp_enqueue_script( 'custom' );
 }

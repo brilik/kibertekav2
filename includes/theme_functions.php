@@ -14,7 +14,7 @@ function ar_the_pagination() {
 	] );
 }
 
-;
+
 add_filter( 'navigation_markup_template', 'glp_navigation_template', 100, 2 );
 function glp_navigation_template( $template, $class ) {
 	$template = '

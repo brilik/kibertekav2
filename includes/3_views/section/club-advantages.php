@@ -1,10 +1,9 @@
 <!-- BEGIN ADVANTAGES -->
 <?php $s = get_field( 'advantages' ); ?>
-<?php if(!empty($s)): ?>
 <section class="advantages">
 	<div class="wrapper">
-		<h2 class="white"><?= $s['title']; ?></h2>
-		<?php if(!empty($s['list'])): ?>
+        <h2 class="white"><?= $s['title']; ?></h2>
+		<?php if ( ! empty( $s['list'] ) ): ?>
 			<div class="advantages-content">
 				<?php foreach ($s['list'] as $key => $item): ?>
 					<div class="advantages-item<?= $key % 2 > 0 ? ' advantages-item__reverse' : ''; ?>">
@@ -19,6 +18,5 @@
 		<?php endif; ?>
 	</div>
 </section>
-<?php endif; ?>
 <?php unset($s); ?>
 <!-- ADVANTAGES EOF   -->
