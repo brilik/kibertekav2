@@ -7,9 +7,17 @@
             <span class="header-time"><?= $o['work_time']; ?></span>
 			<?php the_socials( [ 'whatsup', 'telegram', 'phone' ], 'header-social' ); ?>
 		</div>
-		<div class="header-logo">
-			<img data-src="<?= $o['logo']['url']; ?>" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" class="js-img">
-		</div>
+        <div class="header-logo">
+	        <?php
+	        if ( is_front_page() || is_home() ) {
+		        echo "<img data-src=\"{$o['logo']['url']}\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\" alt=\"{$o['logo']['alt']}\" class=\"js-img\">";
+	        } else {
+		        echo '<a href="' . home_url() . '">';
+		        echo "<img data-src=\"{$o['logo']['url']}\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\" alt=\"{$o['logo']['alt']}\" class=\"js-img\">";
+		        echo '</a>';
+	        }
+	        ?>
+        </div>
 		<div class="header-right">
 			<a href="#call-modal" class="header-call btn js-fancybox"><?= $o['btn_callback_name']; ?></a>
 			<div class="header-btn__nav">

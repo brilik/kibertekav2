@@ -6,9 +6,17 @@
 			<div class="footer-top__box">
 				<div class="footer-col footer-col__nav">
                     <div class="footer-logo">
-                    <?php if(!empty($l['logo'])): ?>
-						<img data-src="<?= $l['logo']['url']; ?>" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="<?= $l['logo']['alt']; ?>" class="js-img">
-                    <?php endif; ?>
+						<?php
+						if ( ! empty( $l['logo'] ) ):
+							if ( is_front_page() || is_home() ) {
+								echo "<img data-src=\"{$l['logo']['url']}\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\" alt=\"{$l['logo']['alt']}\" class=\"js-img\">";
+							} else {
+								echo '<a href="' . home_url() . '">';
+								echo "<img data-src=\"{$l['logo']['url']}\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\" alt=\"{$l['logo']['alt']}\" class=\"js-img\">";
+								echo '</a>';
+							}
+						endif;
+						?>
                     </div>
 					<div class="footer-nav__box">
 						<?php ar_the_view('menu__footer'); ?>

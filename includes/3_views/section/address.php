@@ -1,5 +1,5 @@
 <!-- BEGIN CLUB ADDRESS -->
-<?php $s = get_field( 'clubs' ); ?>
+<?php $s = get_field( 'kluby' ); ?>
 <div class="club-address">
 	<div class="wrapper">
 		<?php foreach ($s as $key => $item): ?>
