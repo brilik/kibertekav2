@@ -149,49 +149,40 @@ class ThemeAR {
         }
     }
 
-    function create_post_type(
-        $title, $internalname, $public = true, $arr = array(
-        'title',
-        'editor',
-        'author',
-        'thumbnail',
-        'excerpt',
-        'comments'
-    )
-    ) {
+	function create_post_type( $title, $internalname, $public = true, $arr = array('title','editor','author','thumbnail','excerpt','comments'), $onUrl = true ) {
 
-        $gutenberg = false;
+		$gutenberg = false;
 
-        if ( in_array( 'gutenberg', $arr ) ) {
-            $gutenberg = true;
-        }
+		if ( in_array( 'gutenberg', $arr ) ) {
+			$gutenberg = true;
+		}
 
-        $labels = array(
-            'name'              => _x( $title, 'post type general name', 'your_text_domain' ),
-            'singular_name'     => _x( $title, 'post type singular name', 'your_text_domain' ),
-            'parent_item_colon' => '',
-            'menu_name'         => __( $title, 'your_text_domain' )
+		$labels = array(
+			'name'              => _x( $title, 'post type general name', 'your_text_domain' ),
+			'singular_name'     => _x( $title, 'post type singular name', 'your_text_domain' ),
+			'parent_item_colon' => '',
+			'menu_name'         => __( $title, 'your_text_domain' )
 
-        );
+		);
 
-        $args = array(
-            'labels'             => $labels,
-            'public'             => $public,
-            'publicly_queryable' => true,
-            'show_ui'            => true,
-            'show_in_menu'       => true,
-            'query_var'          => true,
-            'rewrite'            => array( 'slug' => _x( $internalname, 'URL slug', 'your_text_domain' ) ),
-            'capability_type'    => 'post',
-            'has_archive'        => true,
-            'hierarchical'       => true,
-            'menu_position'      => 10,
-            'show_in_rest'       => $gutenberg,
-            'supports'           => $arr
-        );
+		$args = array(
+			'labels'             => $labels,
+			'public'             => $public,
+			'publicly_queryable' => $onUrl,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => _x( $internalname, 'URL slug', 'your_text_domain' ) ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => true,
+			'menu_position'      => 10,
+			'show_in_rest'       => $gutenberg,
+			'supports'           => $arr
+		);
 
-        register_post_type( $internalname, $args, $internalname );
-    }
+		register_post_type( $internalname, $args, $internalname );
+	}
 
     function create_taxonomy( $title, $inernalname, $posttype, $public = true ) {
 

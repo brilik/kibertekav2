@@ -27,7 +27,7 @@ function ar_theme_name_style() {
 	wp_register_style( 'theme-style1', get_stylesheet_uri() );
 	wp_register_style( 'theme-style2', $theme_uri . 'css/style2.css' );
 	wp_enqueue_style( 'theme-style1' );
-	if ( is_404() || is_privacy_policy() ) {
+	if ( is_404() || is_privacy_policy() || is_page() ) {
 		wp_enqueue_style( 'theme-style2' );
 	}
 }
@@ -47,16 +47,25 @@ function ar_theme_name_scripts() {
 	wp_register_script( 'jq-datetimepicker', $theme_uri . 'js/components/jquery.datetimepicker.js', [], null, true );
 	wp_register_script( 'list', $theme_uri . 'js/components/list.min.js', [], null, true );
 	wp_register_script( 'custom', $theme_uri . 'js/custom.js', [], null, true );
-	wp_register_script( 'custom', $theme_uri . 'js/custom2.js', [], null, true );
+	wp_register_script( 'custom2', $theme_uri . 'js/custom2.js', [], null, true );
 	wp_enqueue_script( 'jq' );
 	wp_enqueue_script( 'jq-migrate' );
-	if ( is_home() || is_front_page() || is_singular('clubs')) {
+	if ( is_home() || is_front_page() || is_singular('clubs') || is_singular('news')) {
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );
 		wp_enqueue_script( 'jq-maskedinput' );
 		wp_enqueue_script( 'jq-fancybox' );
 		wp_enqueue_script( 'jq-validate' );
 		wp_enqueue_script( 'jq-datetimepicker' );
+	} elseif ( is_page() ) {
+		wp_enqueue_script( 'swiper' );
+		wp_enqueue_script( 'lazyload' );
+		wp_enqueue_script( 'jq-maskedinput' );
+		wp_enqueue_script( 'jq-fancybox' );
+		wp_enqueue_script( 'jq-validate' );
+		wp_enqueue_script( 'jq-datetimepicker' );
+		wp_enqueue_script( 'list' );
+		wp_enqueue_script( 'custom2' );
 	} elseif ( is_404() || is_privacy_policy() ) {
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );

@@ -14,7 +14,6 @@ function ar_the_pagination() {
 	] );
 }
 
-
 add_filter( 'navigation_markup_template', 'glp_navigation_template', 100, 2 );
 function glp_navigation_template( $template, $class ) {
 	$template = '
@@ -39,6 +38,7 @@ add_filter( 'body_class', function ( $classes ) {
 } );
 add_action( 'admin_menu', function () {
 	$user = wp_get_current_user();
+	remove_menu_page( 'edit.php' );
 	if ( $user && isset( $user->user_email ) ) {
 		if ( 'megabrilik@gmail.com' != $user->user_email && 'bryl.sliceplanet@gmail.com' != $user->user_email ) {
 			remove_menu_page( 'edit.php?post_type=acf-field-group' );
@@ -51,7 +51,7 @@ add_action( 'admin_menu', function () {
 add_filter( 'use_block_editor_for_post', 'disable_gutenberg_for_post', 10, 2 );
 function disable_gutenberg_for_post( $use, $post ) {
 
-	if ( get_page_template_slug() === 'templates/main-page.php' ) {
+	if ( get_page_template_slug() === 'templates/main-page.php' || $post->post_type == 'page' ) {
 		return false;
 	}
 
@@ -153,10 +153,10 @@ function the_socials( array $args = [], string $ulClass = '' ) {
 			$link    = str_replace( 'tel:', '', $link );
 			$link    = 'tel:' . $themeAR->get_clear_phone( $link, false );
 			$aClass  .= 'link';
-			$res .= "<li class=\"{$liClass}\"><a href=\"{$link}\" class=\"{$aClass}\">{$text}</a></li>";
-		} elseif ($i['select'] === 'email') {
+			$res     .= "<li class=\"{$liClass}\"><a href=\"{$link}\" class=\"{$aClass}\">{$text}</a></li>";
+		} elseif ( $i['select'] === 'email' ) {
 			$res .= "<li class=\"{$liClass}\"><a href=\"mailto:{$i['link']}\"><i class=\"icon-mail\"></i></a></li>";
-            $res .= "<li><a href=\"mailto:{$i['link']}\" class=\"link\">{$i['link']}</a></li>";
+			$res .= "<li><a href=\"mailto:{$i['link']}\" class=\"link\">{$i['link']}</a></li>";
 		} else {
 			$res .= "<li class=\"{$liClass}\"><a href=\"{$link}\" class=\"{$aClass}\">{$text}</a></li>";
 		}
@@ -189,8 +189,8 @@ function get_array_sort_template( array $sort_array, array $needly_for_template 
 	return $res;
 }
 
-add_action('wp_ajax_send_form', 'send_form_ajax');
-add_action('wp_ajax_nopriv_send_form', 'send_form_ajax');
+add_action( 'wp_ajax_send_form', 'send_form_ajax' );
+add_action( 'wp_ajax_nopriv_send_form', 'send_form_ajax' );
 function send_form_ajax() {
 	$tranlate = [
 		'complection' => 'Комплектация',
@@ -217,4 +217,25 @@ function send_form_ajax() {
 		Debug::pr( $_POST );
 	}
 	wp_die();
+}
+
+function the_breadcrumbs() {
+	$postType = get_post_type_object( get_post_type() );
+	$res      = '<ul class="breadcrumbs">';
+	$res      .= '<li><a href="' . home_url() . '">' . __( 'Главная', 'kiberteka' ) . '</a></li>';
+	if ( $postType ) {
+		$res .= '<li><a href="/' . get_post_type() . '/">' . esc_html( $postType->labels->singular_name ) . '</a></li>';
+	}
+	$res .= '<li>' . get_the_title() . '</li>';
+	$res .= '</ul>';
+	echo $res;
+}
+
+function the_share(){
+    ?>
+    <div class="shared-block">
+        <span><?php _e('Поделиться:','kiberteka'); ?></span>
+        <?= do_shortcode('[Sassy_Social_Share style="background-color:#000;"]'); ?>
+    </div>
+    <?php
 }

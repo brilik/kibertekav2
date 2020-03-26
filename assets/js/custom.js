@@ -462,6 +462,7 @@ function getYaMap() {
 function actionsForWordPress() {
     copyTextBtnForForm('.js-copy-text-in-form', '#booking-modal form')
 	sendFormWithAjax()
+	wrapImagesTwoAndMore()
 }
 
 function copyTextBtnForForm(selector, form) {
@@ -567,4 +568,15 @@ function validate(){
             });
         })
     };
+}
+
+function wrapImagesTwoAndMore() {
+    var imgs = $('.js-add-wrap-for-img p > img')
+    if (imgs.length > 1) {
+        imgs.wrapAll('<div class="single-news__img">');
+    }
+}
+
+function heateorSssPopup(e) {
+    window.open(e, "popUpWindow", "height=400,width=600,left=400,top=100,resizable,scrollbars,toolbar=0,personalbar=0,menubar=no,location=no,directories=no,status")
 }
