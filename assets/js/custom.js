@@ -6,7 +6,9 @@ $(window).on('load', function () {
 	};
 	$('body').removeClass('loaded');
 
+    /** START: WordPress */
     actionsForWordPress()
+    /** END: WordPress */
 });
 
 /* viewport width */
@@ -293,74 +295,6 @@ $(function () {
 
 
 	/* calendar */
-
-	/* tabs */
-	$('.library-types li a').click(function () {
-		$('.library-block__items-wrap').addClass('hide-tab');
-		var id = $(this).attr('href');
-		$(id).removeClass('hide-tab');
-		return false;
-	});
-
-	$('.prices-panel li a').click(function () {
-		$('.prices-panel li a').removeClass('active');
-		$(this).addClass('active');
-		$('.prices-block').addClass('hide-tab');
-		var id = $(this).attr('href');
-		$(id).removeClass('hide-tab');
-		return false;
-	});
-
-	/* tabs */
-
-	/*load btn*/
-	if ($('#library-pc').length) {
-		$("#library-pc .library-block__item").slice(0, 20).css('display', 'block');
-		$("#library-pc .library-block__btn-more").on('click', function (e) {
-			e.preventDefault();
-			$("#library-pc .library-block__item:hidden").slice(0, 4).css('display', 'block');
-			if ($("#library-pc .library-block__item:hidden").length == 0) {
-				$("#library-pc .library-block__btn-more").fadeOut('slow');
-			}
-		});
-	}
-	if ($('#library-ps').length) {
-		$("#library-ps .library-block__item").slice(0, 20).css('display', 'block');
-		$("#library-ps .library-block__btn-more").on('click', function (e) {
-			e.preventDefault();
-			$("#library-ps .library-block__item:hidden").slice(0, 4).css('display', 'block');
-			if ($("#library-ps .library-block__item:hidden").length == 0) {
-				$("#library-ps .library-block__btn-more").fadeOut('slow');
-			}
-		});
-	}
-	/*load btn*/
-
-	/*list js*/
-	var options = {
-		valueNames: [
-			'name'
-		]
-	};
-
-	var gamesList1 = new List('library-pc', options);
-	var gamesList2 = new List('library-ps', options);
-	$(".search").keyup(function () {
-		gamesList1.search($(this).val());
-		gamesList2.search($(this).val());
-		if ($(this).val().length < 1) {
-			$(".library-block__btn-more").fadeIn('slow');
-			$(".library-block__item").css('display', 'none');
-			$("#library-pc .library-block__item").slice(0, 20).css('display', 'block');
-			$("#library-ps .library-block__item").slice(0, 20).css('display', 'block');
-		} else {
-			$(".library-block__btn-more").fadeOut('slow');
-			$(".library-block__item").slice(0, $(".library-block__item").length).css('display', 'block');
-		}
-
-	});
-	/*list js*/
-
 });
 
 var handler = function () {
@@ -463,6 +397,46 @@ function actionsForWordPress() {
     copyTextBtnForForm('.js-copy-text-in-form', '#booking-modal form')
 	sendFormWithAjax()
 	wrapImagesTwoAndMore()
+    findGamesWithAjax()
+	loadMoreShowPosts()
+}
+
+
+function findGamesWithAjax() {
+    var searchTerm = '';
+    var searchPlatform = $('#searchform input[name=platform]').val();
+
+    $('.search-input').keydown(function () {
+        searchTerm = $.trim($(this).val());
+    });
+
+    /* START: click on tab for search game */
+    $('.library-types li a').click(function () {
+        var id = $(this).attr('href').replace('#','');
+        $('#searchform input[name=platform]').val(id)
+        ajaxRequestSearchGames(searchTerm, id)
+
+        return false;
+    });
+    /* END: click on tab for search game */
+
+    /* START: input text for search game */
+    $('.search-input').keyup(function () {
+        searchPlatform = $('#searchform input[name=platform]').val();
+        if (!($.trim($(this).val()) == searchTerm)) { // Если новое значение не равно старому, идем дальше
+            searchTerm = $.trim($(this).val());
+            if (searchTerm.length > 0) { // Если введено больше 2-х символов, идем дальше
+                ajaxRequestSearchGames(searchTerm, searchPlatform)
+            }
+        }
+    });
+    /* END: input text for search game */
+
+
+
+    $('.search-input').focusin(function () {
+        $('.result-search').fadeIn();
+    })
 }
 
 function copyTextBtnForForm(selector, form) {
@@ -579,4 +553,55 @@ function wrapImagesTwoAndMore() {
 
 function heateorSssPopup(e) {
     window.open(e, "popUpWindow", "height=400,width=600,left=400,top=100,resizable,scrollbars,toolbar=0,personalbar=0,menubar=no,location=no,directories=no,status")
+}
+
+function ajaxRequestSearchGames(searchTerm, searchPlatform) {
+    $.ajax({
+        url: homeUrl + '/wp-admin/admin-ajax.php', // Ссылка на AJAX обработчик WP
+        type: 'POST', // Отправляем данные методом POST
+        data: {
+            'action': 'ajax_search_games', // Вызываемое действие, которое мы описали в functions.php
+            'term': searchTerm, // Отправляемые данные поля ввода
+            'platform': searchPlatform // Отправляем данные нажатой вкладки
+        },
+        beforeSend: function () { // Перед отправкой данных
+            $('.js-result-search-list').fadeOut(); // Скроем блок результатов
+            $('.js-result-search-list').empty(); // Очистим блок результатов
+            $('.preloader').show(); // Покажем загрузчик
+        },
+        success: function (result) { // После выполнения поиска
+            // console.log(result)
+            $('.preloader').hide(); // Скроем загрузчик
+            $('.js-result-search-list').fadeIn().html(result); // Покажем блок результатов и добавим в него полученные данные
+            loadMoreShowPosts()
+        }
+    });
+}
+
+function loadMoreShowPosts() {
+    var countFirsLoad = 10,
+        countLoadingPosts = 4
+
+    if ($('.js-result-search-list').length) {
+        loadMoreDisplayBlock(countFirsLoad)
+        if ($(".js-result-search-list .library-block__item:hidden").length == 0) {
+            $(".library-block__btn-more").hide();
+        } else {
+            $(".library-block__btn-more").show();
+        }
+
+        $(".library-block__btn-more").on('click', function (e) {
+            e.preventDefault();
+            $(".js-result-search-list .library-block__item:hidden").slice(0, countLoadingPosts).css('display', 'block');
+            if ($(".js-result-search-list .library-block__item:hidden").length == 0) {
+                $(".library-block__btn-more").fadeOut('slow');
+            }
+            return false;
+        });
+    }
+
+}
+
+function loadMoreDisplayBlock(countLoadingPosts) {
+    $(".js-result-search-list .library-block__item").slice(0, countLoadingPosts).css('display', 'block');
 }

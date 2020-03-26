@@ -24,7 +24,8 @@ function glp_navigation_template( $template, $class ) {
 	return $template;
 }
 
-add_theme_support( 'post-thumbnails', [ 'feedback' ] );
+add_theme_support( 'post-thumbnails', [ 'game' ] );
+
 add_filter( 'body_class', function ( $classes ) {
 
 	// добавим класс 'class-name' в массив классов $classes
@@ -238,4 +239,128 @@ function the_share(){
         <?= do_shortcode('[Sassy_Social_Share style="background-color:#000;"]'); ?>
     </div>
     <?php
+}
+
+
+
+
+
+add_filter('get_search_form', 'ba_search_form');
+function ba_search_form( $form ) {
+
+	global $themeAR;
+	$form = '
+		<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" class="library-search">
+			<input type="text" value="' . get_search_query() . '" name="s" class="search-input search" id="s" placeholder="Найти игру..." autocomplete="off" required>
+			<button type="submit" class="library-search__btn">
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="' . $themeAR->get_src() . '/assets/img/icons/search.svg" class="js-img" alt="search">
+            </button>
+            <input type="hidden" name="platform" value="all">
+		</form>
+	';
+
+	return $form;
+}
+
+
+add_action('wp_ajax_nopriv_ajax_search_games','ajax_search_games');
+add_action('wp_ajax_ajax_search_games','ajax_search_games');
+function ajax_search_games(){
+
+    global $themeAR;
+    $s = htmlspecialchars($_POST['term']);
+    $platform = htmlspecialchars($_POST['platform']);
+
+    if($platform === 'all'){
+	    $args = array(
+		    's' => $s,
+		    'post_type' => 'game',
+		    'posts_per_page' => -1
+        );
+    } else {
+	    $args = array(
+		    's' => $s,
+		    'post_type' => 'game',
+		    'posts_per_page' => -1,
+		    'tax_query' => array(
+			    array(
+				    'taxonomy' => 'platform',
+				    'field'    => 'slug',
+				    'terms'    => $platform
+			    )
+		    )
+	    );
+    }
+
+	$the_query = new WP_Query($args);
+	if ($the_query->have_posts()) {
+		while ($the_query->have_posts()) {
+			$the_query->the_post();
+			?>
+                <a href="<?php the_permalink(); ?>" class="library-block__item">
+                    <span class="name"><?php the_title(); ?></span>
+	                <?php
+	                if(has_post_thumbnail()) {
+		                echo '<img src="' . get_the_post_thumbnail_url() . '" class="js-img" alt="' . get_the_title() . '">';
+	                } else {
+		                echo '<img src="'. $themeAR->get_src() .'/images/noimage.png" class="js-img" alt="noimage">';
+	                }
+	                ?>
+                </a>
+			<?php
+		}
+	} else {
+		?>
+        <div class="result_item">
+            <span class="not_found"><?php _e('Ничего не найдено, попробуйте другую игру','kiberteka'); ?></span>
+        </div>
+		<?php
+	}
+	exit;
+}
+
+add_action('wp_head','initialVariablesForJavaScript');
+function initialVariablesForJavaScript() {
+	echo '<script>
+        var themeUrl = "' . get_template_directory_uri() . '"
+        var homeUrl  = "' . home_url() . '"
+    </script>';
+}
+
+function the_platforms() {
+	$res      = (string) '';
+	$taxonomy = [
+		'taxonomy'   => 'platform',
+		'hide_empty' => true,
+		'order'      => 'DESC'
+	];
+	$terms    = get_terms( $taxonomy );
+	if ( $terms && ! is_wp_error( $terms ) ) :
+		$res .= '<ul class="library-types">';
+		foreach ( $terms as $term ) {
+			$res .= '<li><a href="#' . $term->slug . '">' . $term->name . '</a></li>';
+		}
+		$res .= '</ul>';
+	endif;
+	echo $res;
+}
+
+function show_games(){
+	$games = get_posts( [
+		'numberposts' => -1,
+		'orderby'     => 'date',
+		'order'       => 'DESC',
+		'post_type' => 'game',
+	] );
+	foreach( $games as $game ){
+		setup_postdata($game);
+		?>
+        <a href="javascript:void(0)" class="library-block__item">
+            <span class="name"><?php the_title($game->ID); ?></span>
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="<?= get_the_post_thumbnail_url($game->ID); ?>" class="js-img" alt="game">
+        </a>
+		<?php
+	}
+
+	wp_reset_postdata();
 }
