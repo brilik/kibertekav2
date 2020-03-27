@@ -1,7 +1,7 @@
 <!-- BEGIN CONTENT -->
 
 <main class="content">
-    <div class="privacy-policy">
+    <div class="privacy_policy">
         <div class="wrapper">
             <div class="privacy-policy__cnt">
                 <?php the_title('<h1>','</h1>'); ?>

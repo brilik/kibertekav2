@@ -19,7 +19,7 @@
 	        ?>
         </div>
 		<div class="header-right">
-			<a href="#call-modal" class="header-call btn js-fancybox"><?= $o['btn_callback_name']; ?></a>
+			<a href="#call-modal" class="header-call btn js-fancybox" data-popup-link="js-popup-call"><?= $o['btn_callback_name']; ?></a>
 			<div class="header-btn__nav">
 				<a href="#" class="button-nav js-button-nav">
 					<span></span>

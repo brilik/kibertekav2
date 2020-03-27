@@ -25,7 +25,7 @@ $posts = get_posts( array(
                             </div>
                             <div class="stock-item__info">
                                 <span class="stock-item__title"><?= get_the_title($post->ID); ?></span>
-								<?php the_content($post->ID); ?>
+								<p><?= wp_trim_words( get_field('content')['excerpt'], 50, ' ...' ); ?></p>
                                 <a href="<?php the_permalink($post->ID); ?>" class="btn"><?= __( 'Узнать больше', 'kiberteka' ); ?></a>
                             </div>
                         </div>

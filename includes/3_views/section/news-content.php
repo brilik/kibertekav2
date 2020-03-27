@@ -1,6 +1,6 @@
 <!-- BEGIN SINGLE NEWS -->
 <?php $s = get_field( 'content' ); ?>
-<div class="single-news">
+<div class="single_news">
 	<div class="wrapper">
 		<div class="single-news__content js-add-wrap-for-img">
 			<?php

@@ -8,9 +8,10 @@
 				<?php if ( ! empty( $s['list'] ) ): ?>
                     <div class="clubs-items js--clubs-items">
                         <div class="swiper-wrapper">
-							<?php foreach ( $s['list'] as $item ): ?>
+							<?php foreach ( $s['list'] as $key => $item ): ?>
                                 <a href="<?= $item['img']['url']; ?>" class="clubs-item swiper-slide js-fancybox">
-                                    <img src="<?= $item['img']['url']; ?>" alt="<?= $item['img']['alt']; ?>">
+                                    <div><img src="<?= $item['img']['url']; ?>" alt="<?= $item['img']['alt']; ?>"></div>
+                                    <img src="<?= $themeAR->get_src(); ?>/assets/img/club-item-bg<?=$key%2==0?1:2;?>.svg" alt="<?= $item['img']['alt']; ?>" class="clubs-item__bg">
                                 </a>
 							<?php endforeach; ?>
                         </div>

@@ -148,9 +148,9 @@
   .faq__info p, .faq__info li { font-size: 14px; margin-bottom: 10px; }
   .faq__info p:last-child, .faq__info li:last-child { margin-bottom: 0; } }
 
-.privacy-policy { border-top: 150px solid #000851; background: #0D0D0D; background-image: url(../img/rules-decor.png); background-repeat: no-repeat; padding-top: 150px; padding-bottom: 150px; position: relative; }
+.privacy_policy { border-top: 150px solid #000851; background: #0D0D0D; background-image: url(../img/rules-decor.png); background-repeat: no-repeat; padding-top: 150px; padding-bottom: 150px; position: relative; }
 
-.privacy-policy:before { content: ''; width: 100%; height: 1px; background-color: #11CFE7; position: absolute; top: 0; left: 0; right: 0; margin: auto; }
+.privacy_policy:before { content: ''; width: 100%; height: 1px; background-color: #11CFE7; position: absolute; top: 0; left: 0; right: 0; margin: auto; }
 
 .privacy-policy__cnt { background: #00052E; border: 1px solid #11CFE7; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 70px 100px 85px 100px; }
 
@@ -178,13 +178,13 @@
 
 .privacy-policy__item { margin-bottom: 20px; }
 
-@media screen and (max-width: 991px) { .privacy-policy { padding-top: 50px; padding-bottom: 50px; }
+@media screen and (max-width: 991px) { .privacy_policy { padding-top: 50px; padding-bottom: 50px; }
   .privacy-policy__cnt { padding: 30px; margin-top: 90px; } }
 
-@media screen and (max-width: 767px) { .privacy-policy { border: none; }
+@media screen and (max-width: 767px) { .privacy_policy { border: none; }
   .privacy-policy__cnt { padding: 30px 15px; margin-top: 0; }
   .privacy-policy__cnt h1 { font-size: 28px; line-height: 35px; margin-bottom: 20px; }
-  .privacy-policy .wrapper { padding: 0 15px; } }
+  .privacy_policy .wrapper { padding: 0 15px; } }
 
 @media screen and (max-width: 578px) { .privacy-policy__cnt h1 { font-size: 18px; line-height: 22px; }
   .privacy-policy__cnt h2 { font-size: 16px; line-height: 20px; }

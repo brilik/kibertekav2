@@ -25,7 +25,7 @@
 					<div class="news-item swiper-slide">
 						<span class="news-item__title"><?php the_title(); ?></span>
 						<p><?= wp_trim_words( get_field('content')['excerpt'], 50, ' ...' ); ?></p>
-						<a href="<?php the_permalink(); ?>" class="btn">прочитать полностью</a>
+						<a href="<?php the_permalink(); ?>" class="btn"><?= __('прочитать полностью','kiberteka'); ?></a>
 						<span class="news-item__date"><?= get_the_date(); ?></span>
 					</div>
 					<?php endwhile; ?>

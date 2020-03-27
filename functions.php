@@ -46,7 +46,7 @@ function ar_theme_name_scripts() {
 	wp_register_script( 'custom2', $theme_uri . 'js/custom2.js', [], null, true );
 	wp_enqueue_script( 'jq' );
 	wp_enqueue_script( 'jq-migrate' );
-	if ( is_home() || is_front_page() || is_singular( 'clubs' ) || is_singular( 'news' ) ) {
+	if ( is_home() || is_front_page() || is_singular( 'clubs' ) || is_singular( 'news' ) || is_singular( 'stock' ) ) {
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );
 		wp_enqueue_script( 'jq-maskedinput' );
