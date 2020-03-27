@@ -1,8 +1,4 @@
 <?php
-/*
- * $keyGoogleMap = 'AIzaSyCGLMb4BX0iIbD98PzkJXT7J8TbuBK2fq8';
- * $keyGoogleMap = 'AIzaSyBLUNaZ85lCMN7fStJw2Bi3';
-*/
 function includes_full_files( $dir ) {
 	foreach ( glob( $dir . '/*.php' ) as $file ) {
 		include_once $file;

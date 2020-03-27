@@ -44,7 +44,7 @@
 				if ( ! empty( get_privacy_policy_url() ) ) {
 					echo '<p><a href="' . get_privacy_policy_url() . '">' . __( 'Политика конфиденциальности', 'kibrteka' ) . '</a></p>';
 				}
-				echo '<p>Дизайн разработан <a href="https://verstkovo.ru/">Slice Planet</a></p>';
+				echo '<p>'.__('Дизайн разработан ','kiberteka').'<a href="https://verstkovo.ru/">Slice Planet</a></p>';
 				?>
 			</div>
 		</div>

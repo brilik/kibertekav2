@@ -129,7 +129,7 @@ function disable_plugin_updates( $value ) {
  * Заменяем стандартное название в подвале старницы админки "Спасибо вам за творчество с WordPress."
  */
 add_filter( 'admin_footer_text', function () {
-	echo '<span id="footer-thankyou">' . __( 'Сделано с любовью' ) . '&nbsp;<a href="https://vertkovo.ru/"><b>Verstkovo</b></a></span>';
+	echo '<span id="footer-thankyou">' . __( 'Сделано с любовью' ) . '&nbsp;<a href="https://verstkovo.ru/"><b>Verstkovo</b></a></span>';
 } );
 function the_socials( array $args = [], string $ulClass = '' ) {
 	global $themeAR;
