@@ -1109,27 +1109,29 @@ a.link:hover { border-color: transparent; }
 
 .clubs-content { margin-top: 45px; }
 
-.clubs-items { overflow: hidden; padding: 10px; position: relative; }
+.clubs-items { overflow: hidden; padding: 10px; padding-top: 20px; position: relative; }
 
 .clubs-items:before, .clubs-items:after { position: absolute; width: 280px; height: 100%; background: #0D0D0D; content: ''; z-index: 9; }
 
-.clubs-items:before { left: -250px; top: 10px; -webkit-transform: rotate(-5deg); -ms-transform: rotate(-5deg); transform: rotate(-5deg); }
+.clubs-items:before { left: -250px; top: 10px; -webkit-transform: rotate(-5.6deg); -ms-transform: rotate(-5.6deg); transform: rotate(-5.6deg); }
 
-.clubs-items:after { right: -250px; top: -10px; -webkit-transform: rotate(-5deg); -ms-transform: rotate(-5deg); transform: rotate(-5deg); }
+.clubs-items:after { right: -250px; top: -10px; -webkit-transform: rotate(-5.6deg); -ms-transform: rotate(-5.6deg); transform: rotate(-5.6deg); }
 
-.clubs-item { position: relative; -webkit-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear; }
+.clubs-item { position: relative; -webkit-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear; margin-left: -1px; }
 
-.clubs-item:before { position: absolute; left: -7px; top: 5px; width: 100%; height: 100%; content: ''; background-image: url(../img/club-item-bg1.svg); background-repeat: no-repeat; -webkit-background-size: contain; background-size: contain; z-index: -1; -webkit-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear; }
+.clubs-item div:first-of-type img { width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; z-index: 10; overflow: hidden; -webkit-transform: skew(0deg, 0deg) translate(40px, 0); -ms-transform: skew(0deg, 0deg) translate(40px, 0); transform: skew(0deg, 0deg) translate(40px, 0); padding-right: 60px; }
+
+.clubs-item div:first-of-type { overflow: hidden; -webkit-transform: skew(5.6deg, 0deg); -ms-transform: skew(5.6deg, 0deg); transform: skew(5.6deg, 0deg); height: 100%; display: inline-block; position: absolute; left: 7px; top: -7px; z-index: 10; }
+
+.clubs-item .clubs-item__bg { left: -7px; top: 5px; width: 100%; height: 100%; background-repeat: no-repeat; -webkit-background-size: contain; background-size: contain; z-index: -1; -webkit-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear; display: block; }
 
 .clubs-item:nth-child(even) { margin-top: 70px; }
 
-.clubs-item:nth-child(even):before { background-image: url(../img/club-item-bg2.svg); }
-
 .clubs-item:hover { opacity: .7; }
 
-.clubs-item:hover:before { top: -5px; height: -webkit-calc(100% - 5px); height: calc(100% - 5px); }
+.clubs-item:hover .clubs-item__bg { height: -webkit-calc(100% - 14px); height: calc(100% - 14px); -webkit-transform: translateY(-14px); -ms-transform: translateY(-14px); transform: translateY(-14px); }
 
-.nav-arrow { position: absolute; top: 57%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); width: 70px; height: 70px; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; border: 3px solid #FF14A1; -webkit-border-radius: 50%; border-radius: 50%; -webkit-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear; cursor: pointer; }
+.nav-arrow { position: absolute; top: 57%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); width: 70px; height: 70px; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; border: 3px solid #FF14A1; -webkit-border-radius: 50%; border-radius: 50%; -webkit-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear; z-index: 11; cursor: pointer; }
 
 .nav-arrow:after { position: absolute; left: 51%; top: 50%; -webkit-transform: translate(-50%, -49%); -ms-transform: translate(-50%, -49%); transform: translate(-50%, -49%); width: 145%; height: 145%; content: ''; background-image: url(../img/nav-icon-bg.svg); background-repeat: no-repeat; -webkit-background-size: cover; background-size: cover; background-position: center center; }
 
@@ -1203,7 +1205,9 @@ a.link:hover { border-color: transparent; }
 
 .fancybox-wrap { width: auto !important; }
 
-.fancybox-inner { max-width: 884px; max-height: initial; }
+.fancybox-inner { max-width: 884px; }
+
+.fancybox-inner { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; height: auto !important; }
 
 .window-open { height: 100%; overflow: auto; width: 100%; max-width: 100%; position: relative; background: #000851; -webkit-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8); box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8); padding: 30px 50px; }
 
@@ -1688,7 +1692,9 @@ a.link:hover { border-color: transparent; }
 
 .fancybox-skin { background-color: transparent; -webkit-box-shadow: none !important; box-shadow: none !important; }
 
-.fancybox-close { position: absolute; right: -20px; top: 10px; background: #0D0D0D; border: 1px solid #11CFE7; width: 44px; height: 44px; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; }
+.fancybox-image, .fancybox-iframe { height: auto; }
+
+.fancybox-close { position: absolute; right: -50px; top: 10px; background: #0D0D0D; border: 1px solid #11CFE7; width: 44px; height: 44px; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; }
 
 .fancybox-close:after { content: "\e904"; color: #fff; font-family: 'icomoon' !important; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; display: block; -webkit-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear; }
 
@@ -1904,9 +1910,12 @@ a.link:hover { border-color: transparent; }
   .contacts-club-address .club-address__item-info { width: 100%; }
   .contacts-booking .about-img { width: auto; }
   html.fixed .fancybox-wrap .fancybox-inner { min-height: 100% !important; }
-  html.fixed .fancybox-overlay { position: fixed !important; } }
+  html.fixed .fancybox-overlay { position: fixed !important; }
+  .fancybox-close { right: 0; }
+  .clubs-item div:first-of-type img { -webkit-transform: skew(0deg, 0deg) translate(30px, 0); -ms-transform: skew(0deg, 0deg) translate(30px, 0); transform: skew(0deg, 0deg) translate(30px, 0); } }
 
-@media screen and (max-width: 767px) { .wrapper { padding-left: 15px; padding-right: 15px; }
+@media screen and (max-width: 767px) { .clubs-item div:first-of-type img { padding-right: 30px; -webkit-transform: skew(0deg, 0deg) translate(20px, 0); -ms-transform: skew(0deg, 0deg) translate(20px, 0); transform: skew(0deg, 0deg) translate(20px, 0); }
+  .wrapper { padding-left: 15px; padding-right: 15px; }
   .main-block { padding: 15px; }
   .main-block__box .wrapper { padding-top: 100px; padding-bottom: 100px; min-width: auto; }
   h1 { font-size: 35px; line-height: 50px; }

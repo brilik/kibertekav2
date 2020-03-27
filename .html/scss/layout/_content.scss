@@ -545,6 +545,7 @@ a.link {
 	&-items {
 		overflow: hidden;
 		padding: 10px;
+		padding-top: 20px;
 		position: relative;
 		&:before, &:after {
 			position: absolute;
@@ -557,44 +558,74 @@ a.link {
 		&:before {
 			left: -250px;
 			top: 10px;
-			transform: rotate(-5deg);
+			transform: rotate(-5.6deg);
 		}
 		&:after {
 			right: -250px;
 			top: -10px;
-			transform: rotate(-5deg);
+			transform: rotate(-5.6deg);
 		}
 	}
 	&-item {
 		position: relative;
 		transition: $transition;
-		&:before {
+		margin-left: -1px;
+		div:first-of-type img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			// clip-path: polygon(0 0, 72% 0, 100% 100%, 28% 100%);
+			// position: absolute;
+			// left: 7px;
+			// top: -7px;
+			z-index: 10;
+			overflow: hidden;
+			transform: skew(0deg, 0deg) translate(40px, 0);
+    		padding-right: 60px;
+		}
+		div:first-of-type {
+			overflow: hidden;
+			transform: skew(5.6deg, 0deg);
+			height: 100%;
+			display: inline-block;
 			position: absolute;
+			left: 7px;
+			top: -7px;
+			z-index: 10;
+		}
+			
+		.clubs-item__bg {
+			// position: absolute;
 		    left: -7px;
     		top: 5px;
 			width: 100%;
 			height: 100%;
-			content: '';
-			background-image: url(../img/club-item-bg1.svg);
+			// background-image: url(../img/club-item-bg1.svg);
 			background-repeat: no-repeat;
 			background-size: contain;
 			z-index: -1;
 			transition: $transition;
+			display: block;
 		}
 		&:nth-child(even) {
 			margin-top: 70px;
 			&:before {
-				background-image: url(../img/club-item-bg2.svg);
+				// background-image: url(../img/club-item-bg2.svg);
 			}
 		}
 		&:hover {
 			opacity: .7;
-			&:before {
-				top: -5px;
-				height: calc(100% - 5px);
+			.clubs-item__bg  {
+				height: calc(100% - 14px);
+				transform: translateY(-14px);
 			}
 		}
 	}
+}
+
+.swiper-wrapper {
+	// align-items: stretch;
+    // align-content: stretch;
 }
 
 .nav-arrow {
@@ -609,6 +640,7 @@ a.link {
 	border: 3px solid #FF14A1;
 	border-radius: 50%;
 	transition: $transition;
+	z-index: 11;
 	cursor: pointer;
 	&:after {
 		position: absolute;
@@ -843,7 +875,14 @@ a.link {
 .fancybox-inner {
     max-width: 884px;
 	// max-height: 625px;
-	max-height: initial;
+	// max-height: initial;
+}
+
+.fancybox-inner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: auto!important;
 }
 
 .window-open {
@@ -2292,9 +2331,15 @@ a.link {
 	box-shadow: none!important;
 }
 
+.fancybox-image, .fancybox-iframe {
+	height: auto;
+}
+
+
+
 .fancybox-close {
 	position: absolute;
-	right: -20px;
+	right: -50px;
 	top: 10px;
 	background: #0D0D0D;
 	border: 1px solid #11CFE7;
@@ -3079,13 +3124,21 @@ a.link {
 		}
 	}
 	
-	
-	
+	.fancybox-close {
+		right: 0;
+	}
+	.clubs-item div:first-of-type img {
+		transform: skew(0deg, 0deg) translate(30px, 0);
+	}
 }
 
 
 
 @media screen and (max-width: 767px) {
+	.clubs-item div:first-of-type img {
+		padding-right: 30px;
+		transform: skew(0deg, 0deg) translate(20px, 0);
+	}
 	.wrapper {
 		padding-left: 15px;
 		padding-right: 15px;
