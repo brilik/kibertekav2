@@ -915,20 +915,16 @@ class ThemeAR {
     public function get_title($delimiter = '|')
     {
         $res = '';
-        if (is_front_page() || is_home() || is_page()){
+	    if ( is_front_page() || is_home() || is_page() ) {
             $res = bloginfo('name') . " $delimiter " . get_the_title();
-        }
-        elseif(is_archive() || is_category()) {
-            echo bloginfo('name') . " $delimiter ";
-            single_cat_title();
-            $res = '';
-        }
-        elseif (is_single()){
+        } elseif ( is_archive() || is_category() ) {
+            $res = get_bloginfo('name') . " {$delimiter} " . post_type_archive_title( '', false );
+        } elseif ( is_single() ) {
             $res = get_the_title();
-        } elseif (is_search()){
+        } elseif ( is_search() ) {
             $res = __('Результат поиска');
         } elseif (is_404()){
-            $re = __('404 Error');
+            $res = __('404 Error');
         }
 
         return $res;

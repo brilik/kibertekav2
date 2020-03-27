@@ -50,7 +50,7 @@ function ar_theme_name_scripts() {
 	wp_register_script( 'custom2', $theme_uri . 'js/custom2.js', [], null, true );
 	wp_enqueue_script( 'jq' );
 	wp_enqueue_script( 'jq-migrate' );
-	if ( is_home() || is_front_page() || is_singular('clubs') || is_singular('news')) {
+	if ( is_home() || is_front_page() || is_singular( 'clubs' ) || is_singular( 'news' ) ) {
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );
 		wp_enqueue_script( 'jq-maskedinput' );
@@ -58,6 +58,7 @@ function ar_theme_name_scripts() {
 		wp_enqueue_script( 'jq-validate' );
 		wp_enqueue_script( 'jq-datetimepicker' );
 	} elseif ( is_page() ) {
+		optiomization();
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );
 		wp_enqueue_script( 'jq-maskedinput' );
@@ -67,15 +68,31 @@ function ar_theme_name_scripts() {
 		wp_enqueue_script( 'list' );
 		wp_enqueue_script( 'custom2' );
 	} elseif ( is_404() || is_privacy_policy() ) {
+		optiomization();
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );
 		wp_enqueue_script( 'jq-maskedinput' );
 		wp_enqueue_script( 'jq-fancybox' );
 		wp_enqueue_script( 'custom2' );
-	}else {
+	} elseif ( is_archive() ) {
+		optiomization();
+		wp_enqueue_script( 'swiper' );
+		wp_enqueue_script( 'lazyload' );
+		wp_enqueue_script( 'jq-maskedinput' );
+		wp_enqueue_script( 'jq-fancybox' );
+		wp_enqueue_script( 'jq-validate' );
+		wp_enqueue_script( 'jq-datetimepicker' );
+	} else {
 		wp_enqueue_script( 'lazyload' );
 	}
 	wp_enqueue_script( 'custom' );
+}
+
+function optiomization(){
+	wp_deregister_style('heateor_sss_frontend_css');
+	wp_deregister_style('heateor_sss_sharing_svg');
+	wp_deregister_style('heateor_sss_sharing_svg_hover');
+	wp_deregister_script('hoverintent-js');
 }
 
 /** Подлючаем svg файлы */

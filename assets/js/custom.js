@@ -399,6 +399,7 @@ function actionsForWordPress() {
 	wrapImagesTwoAndMore()
     findGamesWithAjax()
 	loadMoreShowPosts()
+	addClassesForPagination()
 }
 
 
@@ -604,4 +605,15 @@ function loadMoreShowPosts() {
 
 function loadMoreDisplayBlock(countLoadingPosts) {
     $(".js-result-search-list .library-block__item").slice(0, countLoadingPosts).css('display', 'block');
+}
+
+function addClassesForPagination() {
+	var wrap = '.news-pagination';
+
+	$(wrap).find('ul').addClass('paging-list')
+    $(wrap).find('li').addClass('paging-list__item')
+    $(wrap).find('li:first').has('a').addClass('paging-prev')
+    $(wrap).find('li:last').has('a').addClass('paging-next')
+    $(wrap).find('a, span').addClass('paging-list__link')
+    $(wrap).find('.current').addClass('active')
 }

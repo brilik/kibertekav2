@@ -224,10 +224,14 @@ function the_breadcrumbs() {
 	$postType = get_post_type_object( get_post_type() );
 	$res      = '<ul class="breadcrumbs">';
 	$res      .= '<li><a href="' . home_url() . '">' . __( 'Главная', 'kiberteka' ) . '</a></li>';
-	if ( $postType ) {
-		$res .= '<li><a href="/' . get_post_type() . '/">' . esc_html( $postType->labels->singular_name ) . '</a></li>';
+	if ( is_archive() ) {
+		$res .= '<li>'. esc_html( $postType->labels->singular_name ) . '</li>';
+	} else {
+		if ( $postType ) {
+			$res .= '<li><a href="/' . get_post_type() . '/">' . esc_html( $postType->labels->singular_name ) . '</a></li>';
+		}
+		$res .= '<li>' . get_the_title() . '</li>';
 	}
-	$res .= '<li>' . get_the_title() . '</li>';
 	$res .= '</ul>';
 	echo $res;
 }
@@ -363,4 +367,25 @@ function show_games(){
 	}
 
 	wp_reset_postdata();
+}
+
+function the_news_navigation() {
+
+	the_posts_pagination(
+		[
+			'show_all'  => true,
+			'type'      => 'list',
+			'mid_size'  => 2,
+			'prev_text' => sprintf(
+				'<i class="icon-arrow-paging"></i>%s %s',
+				'',
+				__( 'Назад', 'kiberteka' )
+			),
+			'next_text' => sprintf(
+				'%s %s',
+				'<i class="icon-arrow-paging"></i>',
+				__( 'Вперёд', 'kiberteka' )
+			),
+		]
+	);
 }
