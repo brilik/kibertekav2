@@ -24,7 +24,7 @@ function glp_navigation_template( $template, $class ) {
 	return $template;
 }
 
-add_theme_support( 'post-thumbnails', [ 'game' ] );
+add_theme_support( 'post-thumbnails', [ 'game', 'stock' ] );
 
 add_filter( 'body_class', function ( $classes ) {
 
