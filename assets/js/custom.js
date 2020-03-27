@@ -295,6 +295,15 @@ $(function () {
 
 
 	/* calendar */
+
+    $('body.single .prices-panel li a').click(function () {
+        $('body.single .prices-panel li a').removeClass('active');
+        $(this).addClass('active');
+        $('.prices-block').addClass('hide-tab');
+        var id = $(this).attr('href');
+        $(id).removeClass('hide-tab');
+        return false;
+    });
 });
 
 var handler = function () {
