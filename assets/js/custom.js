@@ -237,39 +237,6 @@ $(function () {
 	});
 	/*scroll id*/
 
-	/*form validation*/
-	if ($('.js--contact-form').length) {
-		$('.js--contact-form').each(function () {
-			$(this).validate({
-				rules: {
-					name: {
-						required: true,
-						minlength: 1
-					},
-					phone: {
-						required: true
-					}
-				},
-				messages: {
-					name: {
-						required: "",
-						minlength: ""
-					},
-					phone: {
-						required: ""
-					}
-				},
-
-				submitHandler: function (form) {
-					$('.contact-form-success').addClass('active');
-					$('.contact-form').addClass('fade');
-				}
-			});
-		})
-	};
-	/*form validation*/
-
-
 	/* calendar */
 
 	$('#input-date').datetimepicker({
@@ -494,6 +461,7 @@ function sendFormWithAjax() {
 }
 
 function validate(){
+    /*form validation*/
     if ($('.js--contact-form2').length) {
         $('.js--contact-form2').each(function () {
             $(this).validate({
@@ -552,6 +520,36 @@ function validate(){
             });
         })
     };
+    if ($('.js--contact-form').length) {
+        $('.js--contact-form').each(function () {
+            $(this).validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 1
+                    },
+                    phone: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "",
+                        minlength: ""
+                    },
+                    phone: {
+                        required: ""
+                    }
+                },
+
+                submitHandler: function (form) {
+                    $('.contact-form-success').addClass('active');
+                    $('.contact-form').addClass('fade');
+                }
+            });
+        })
+    };
+    /*form validation*/
 }
 
 function wrapImagesTwoAndMore() {
