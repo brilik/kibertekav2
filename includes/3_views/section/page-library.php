@@ -23,6 +23,3 @@
 </div>
 <?php unset($s); ?>
 <!-- LIBRARY BLOCK EOF   -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {})
-</script>
