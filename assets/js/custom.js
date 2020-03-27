@@ -438,7 +438,7 @@ function sendFormWithAjax() {
 
         $.ajax({
             type: "POST",
-            url: "wp-admin/admin-ajax.php",
+            url: homeUrl + "/wp-admin/admin-ajax.php",
             data: $(this).serialize() + "&action=send_form",
             success: function (res) {
                 form.find(":submit").attr("disabled", false)
