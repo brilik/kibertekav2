@@ -14,7 +14,7 @@
 					<div class="club-address__item-detail">
 						<?php if($link = $contacts['location']['address']): ?>
 							<ul>
-								<li class="social-icon"><a href="<?php the_permalink($item->ID); ?>"><i class="icon-marker"></i></a></li>
+								<li class="social-icon"><a href="javascript:void(0);"><i class="icon-marker"></i></a></li>
 								<li class="club-address__item-detail-text"><?= $link; ?></li>
 							</ul>
 						<?php endif; ?>
@@ -36,7 +36,7 @@
 						<ul>
 							<?php
 							if ( $link = ( $contacts['contact_club']['work_time'] ) ) {
-								echo "<li class=\"social-icon\"><a href=\"#\"><i class=\"icon-time\"></i></a></li>";
+								echo "<li class=\"social-icon\"><a href=\"javascript:void(0);\"><i class=\"icon-time\"></i></a></li>";
 								echo "<li class=\"club-address__item-detail-text\">{$link}</li>";
 							}
 							?>

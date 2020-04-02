@@ -24,7 +24,7 @@ function glp_navigation_template( $template, $class ) {
 	return $template;
 }
 
-add_theme_support( 'post-thumbnails', [ 'game', 'stock' ] );
+add_theme_support( 'post-thumbnails', [ 'game', 'stock', 'offer' ] );
 
 add_filter( 'body_class', function ( $classes ) {
 
@@ -200,7 +200,7 @@ function send_form_ajax() {
 		'time-to'     => 'Время до',
 		'time'        => 'Время с',
 		'date'        => 'Дата',
-		'email'       => 'Номер телeфона или почта для подтвержденияx',
+		'email'       => 'Номер телeфона или почта для подтверждения',
 		'phone'       => 'Номер телeфона или почта для подтверждения',
 		'name2'       => 'Имя',
 		'name'        => 'Имя',
@@ -306,7 +306,7 @@ function ajax_search_games(){
 		while ($the_query->have_posts()) {
 			$the_query->the_post();
 			?>
-                <a href="<?php the_permalink(); ?>" class="library-block__item">
+                <a href="javascript:void(0)" class="library-block__item" style="cursor: default;">
                     <span class="name"><?php the_title(); ?></span>
 	                <?php
 	                if(has_post_thumbnail()) {

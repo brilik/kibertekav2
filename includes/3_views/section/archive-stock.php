@@ -5,7 +5,7 @@ $posts = get_posts( array(
 	'numberposts' => -1,
 	'orderby'     => 'date',
 	'order'       => 'DESC',
-	'post_type'   => 'stock',
+	'post_type'   => 'offer',
 ) );
 ?>
 <section class="stock">

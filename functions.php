@@ -47,10 +47,10 @@ function ar_theme_name_scripts() {
 	wp_register_script( 'list', $theme_uri . 'js/components/list.min.js', [], $theme->get('Version'), true );
 	wp_register_script( 'custom', $theme_uri . 'js/custom.js', [], $theme->get('Version'), true );
 	wp_register_script( 'custom2', $theme_uri . 'js/custom2.js', [], $theme->get('Version'), true );
-	wp_register_script( 'api-map', 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=getYaMap', [], null, true );
+	wp_register_script( 'api-map', 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=getYaMap', [], null, false );
 	wp_enqueue_script( 'jq' );
 	wp_enqueue_script( 'jq-migrate' );
-	if ( is_home() || is_front_page() || is_singular( 'clubs' ) || is_singular( 'news' ) || is_singular( 'stock' ) ) {
+	if ( is_home() || is_front_page() || is_singular( 'clubs' ) || is_singular( 'news' ) || is_singular( 'stock' ) || is_singular( 'offer' ) ) {
 		wp_enqueue_script( 'swiper' );
 		wp_enqueue_script( 'lazyload' );
 		wp_enqueue_script( 'jq-maskedinput' );

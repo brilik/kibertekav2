@@ -22,7 +22,7 @@ if ( have_posts() ) :
                 elem.type = 'text/javascript';
                 elem.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=getYaMap';
                 document.getElementsByTagName('body')[0].appendChild(elem);
-            }, 2000);
+            }, 200);
         </script>
 	<?php
 	endwhile;

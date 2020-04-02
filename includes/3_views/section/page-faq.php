@@ -17,7 +17,7 @@ $faq = get_posts([
 						<span class="faq__title-plus"></span>
 					</div>
 				</div>
-				<div class="faq__info js-toggle-info"><?= $item->post_content; ?></div>
+				<div class="faq__info js-toggle-info"><?= apply_filters('the_content', $item->post_content); ?></div>
 			</div>
             <?php endforeach; ?>
 		</div>

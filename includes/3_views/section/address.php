@@ -28,7 +28,7 @@ if(!empty($args)){
 					<div class="club-address__item-detail">
 						<?php if ( $link = $contacts['location']['address'] ): ?>
                             <ul>
-                                <li class="social-icon"><a href="<?php the_permalink( $item->ID ); ?>"><i
+                                <li class="social-icon"><a href="<?php if( is_home() || is_front_page() ){ the_permalink( $item->ID ); } else{ echo 'javascript:void(0);'; } ?>"><i
                                                 class="icon-marker"></i></a></li>
                                 <li class="club-address__item-detail-text"><?= $link; ?></li>
                             </ul>
@@ -54,7 +54,7 @@ if(!empty($args)){
 						<?php else: ?>
 							<?php if ( $link = ( $contacts['contact_club']['work_time'] ) ) { ?>
                                 <ul>
-                                    <li class="social-icon"><a href="#"><i class="icon-time"></i></a></li>
+                                    <li class="social-icon"><a href="javascript:void(0);"><i class="icon-time"></i></a></li>
                                     <li class="club-address__item-detail-text"><?= $link; ?></li>
                                 </ul>
 							<?php }; ?>
