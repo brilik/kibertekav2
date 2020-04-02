@@ -295,78 +295,7 @@ $(window).bind('load', handler);
 $(window).bind('resize', handler);
 
 function getYaMap() {
-	if ($('#map').length) {
-		ymaps.ready(function () {
-			var myMap = new ymaps.Map('map', {
-				center: [55.760874, 37.718076],
-				zoom: 15
-			}, {
-				searchControlProvider: 'yandex#search'
-			})
-
-			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-				myMap.behaviors.disable('multiTouch');
-				myMap.behaviors.disable('scrollZoom');
-				myMap.behaviors.disable('drag');
-			};
-			myMap.behaviors.disable('scrollZoom');
-			myMap.controls.remove('geolocationControl');
-			myMap.controls.remove('searchControl');
-			myMap.controls.remove('trafficControl');
-			myMap.controls.remove('typeSelector');
-			myMap.controls.remove('fullscreenControl');
-			myMap.controls.remove('rulerControl');
-		});
-
-	};
-	if ($('#map2').length) {
-		ymaps.ready(function () {
-			var myMap = new ymaps.Map('map2', {
-				center: [55.760874, 37.718076],
-				zoom: 15
-			}, {
-				searchControlProvider: 'yandex#search'
-			})
-
-			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-				myMap.behaviors.disable('multiTouch');
-				myMap.behaviors.disable('scrollZoom');
-				myMap.behaviors.disable('drag');
-			};
-			myMap.behaviors.disable('scrollZoom');
-			myMap.controls.remove('geolocationControl');
-			myMap.controls.remove('searchControl');
-			myMap.controls.remove('trafficControl');
-			myMap.controls.remove('typeSelector');
-			myMap.controls.remove('fullscreenControl');
-			myMap.controls.remove('rulerControl');
-		});
-
-	};
-	if ($('#map3').length) {
-		ymaps.ready(function () {
-			var myMap = new ymaps.Map('map3', {
-				center: [55.760874, 37.718076],
-				zoom: 15
-			}, {
-				searchControlProvider: 'yandex#search'
-			})
-
-			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-				myMap.behaviors.disable('multiTouch');
-				myMap.behaviors.disable('scrollZoom');
-				myMap.behaviors.disable('drag');
-			};
-			myMap.behaviors.disable('scrollZoom');
-			myMap.controls.remove('geolocationControl');
-			myMap.controls.remove('searchControl');
-			myMap.controls.remove('trafficControl');
-			myMap.controls.remove('typeSelector');
-			myMap.controls.remove('fullscreenControl');
-			myMap.controls.remove('rulerControl');
-		});
-
-	};
+	console.log('init yandex map')
 }
 
 function actionsForWordPress() {

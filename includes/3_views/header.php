@@ -2,7 +2,7 @@
 <!-- BEGIN HEADER -->
 
 <header class="header">
-    <div class="header-box header-box__black">
+    <div class="header-box<?= is_singular('clubs') ? '' : ' header-box__black'; ?>">
         <div class="header-left">
             <span class="header-time"><?= $o['work_time']; ?></span>
 			<?php the_socials( [ 'whatsup', 'telegram', 'phone' ], 'header-social' ); ?>

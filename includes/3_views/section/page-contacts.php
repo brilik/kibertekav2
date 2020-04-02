@@ -5,7 +5,8 @@ $args = [
 	'block' => [
 		'class' => 'contacts-club-address',
 		'id'    => 'two-section'
-	]
+	],
+    'map' => true
 ];
 ar_the_view( 'section__address', $args );
 unset( $s );

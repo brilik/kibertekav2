@@ -1,7 +1,7 @@
 <!-- BEGIN CLUBS -->
 <?php $s = get_field( 'clubs' ); ?>
 <?php if ( ! empty( $s['list'][0]['img'] ) ): ?>
-    <section class="clubs">
+    <section class="clubs clubs-gallery">
         <div class="wrapper">
             <h2><?= $s['title']; ?></h2>
             <div class="clubs-content">

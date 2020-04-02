@@ -13,9 +13,15 @@ if(!empty($args)){
 		<?php foreach ($s as $key => $item): ?>
         <?php $contacts = get_field('contacts', $item->ID); ?>
 			<div class="club-address__item<?= ($key % 2 > 0) ? ' club-address__item-reverse' : '' ?>">
+                <?php if( $key < 1 ): ?>
 				<img data-src="<?= $themeAR->get_src(); ?>/assets/img/main-decor1.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="<?=get_field('preview', $item->ID)['img']['alt']; ?>" class="js-img club-address__item-decor">
+				<?php endif; ?>
 				<div class="club-address__item-img">
-					<img data-src="<?=get_field('preview', $item->ID)['img']['url']; ?>" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="<?=get_field('preview', $item->ID)['img']['alt']; ?>" class="js-img">
+                    <?php if ( isset( $args['map'] ) ): ?>
+                        <div id="map<?=$key+1?>" class="map-cont"></div>
+                    <?php else: ?>
+					    <img data-src="<?=get_field('preview', $item->ID)['img']['url']; ?>" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="<?=get_field('preview', $item->ID)['img']['alt']; ?>" class="js-img">
+                    <?php endif; ?>
 				</div>
 				<div class="club-address__item-info">
 					<h3><?= get_field( 'preview', $item->ID )['title']; ?></h3>
@@ -56,6 +62,37 @@ if(!empty($args)){
                     </div>
 				</div>
 			</div>
+            <?php $yamap = json_decode($contacts['location']['yamap'],true); ?>
+            <?php if(isset($args['map']) && !empty($contacts['location']['yamap'])): ?>
+            <script>
+                setTimeout(function(){
+                    if ($('#map<?=$key+1?>').length) {
+                        ymaps.ready(function () {
+                            var myMap = new ymaps.Map('map<?=$key+1?>', {
+                                center: [<?= $yamap['center_lat']; ?>, <?= $yamap['center_lng']; ?>],
+                                zoom: <?= $yamap['zoom']; ?>
+                            }, {
+                                searchControlProvider: 'yandex#search'
+                            })
+
+                            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                                myMap.behaviors.disable('multiTouch');
+                                myMap.behaviors.disable('scrollZoom');
+                                myMap.behaviors.disable('drag');
+                            };
+                            myMap.behaviors.disable('scrollZoom');
+                            myMap.controls.remove('geolocationControl');
+                            myMap.controls.remove('searchControl');
+                            myMap.controls.remove('trafficControl');
+                            myMap.controls.remove('typeSelector');
+                            myMap.controls.remove('fullscreenControl');
+                            myMap.controls.remove('rulerControl');
+                        });
+
+                    };
+                }, 2000)
+            </script>
+            <?php endif; ?>
 		<?php endforeach; ?>
 	</div>
 </div>

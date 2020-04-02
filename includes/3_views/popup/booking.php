@@ -30,13 +30,22 @@
 											<label class="box-field__label" for="input-num">Колличество</label>
 											<input class="form-control" type="text" id="input-num" name="num" required>
 										</div>
-										<div class="box-field">
-											<div class="box-field__icon">
-												<i class="icon-clock"></i>
-											</div>
-											<label class="box-field__label" for="input-time">Время с</label>
-											<input class="form-control" type="text" id="input-time" name="time" required>
-										</div>
+                                        <div class="box-field box-field__date">
+                                            <div class="box-field__icon">
+                                                <i class="icon-clock"></i>
+                                            </div>
+                                            <label class="box-field__label" for="input-date">Дата</label>
+                                            <input class="form-control" type="text" id="input-date" name="date" required="">
+                                        </div>
+                                        <div class="box-field box-field__time">
+                                            <div class="box-field__icon">
+                                                <i class="icon-clock"></i>
+                                            </div>
+                                            <label class="box-field__label" for="input-time">Время с</label>
+                                            <label class="box-field__label box-field__label-to" for="input-time-to">Время до</label>
+                                            <input class="form-control" type="text" id="input-time" name="time-with" required="">
+                                            <input class="form-control" type="text" id="input-time-to" name="time-to" required="">
+                                        </div>
 										<div class="box-field">
 											<div class="box-field__icon">
 												<i class="icon-phone"></i>

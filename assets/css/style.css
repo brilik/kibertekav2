@@ -1376,7 +1376,27 @@ a.link:hover { border-color: transparent; }
 
 .shared-block ul li { background-color: #0D0D0D; width: 44px; height: 44px; margin-right: 13px; }
 
-.shared-block ul li i { font-size: 14px; }
+.shared-block ul li i { font-size: 14px; 
+  transition: all 0.2s linear;
+}
+
+.heateorSssSharingSvg {
+  width: 70%!important;
+  height: 100%!important;
+  margin: auto!important;
+}
+
+.shared-block ul.heateor_sss_sharing_ul li {
+  margin-right: 13px!important;
+}
+
+.shared-block ul.heateor_sss_sharing_ul li:last-of-type {
+  margin-right: 0!important;
+}
+
+.heateor_sss_sharing_container {
+  background-color: transparent!important;
+}
 
 .shared-block ul li i.icon-vk { font-size: 12px; }
 
@@ -1676,7 +1696,7 @@ a.link:hover { border-color: transparent; }
 
 .single-news__content .single-news__img img { -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; }
 
-#map, #map2, #map3 { width: 100%; height: 92.2%; margin-top: 17px; z-index: 99; position: relative; -webkit-clip-path: polygon(57% 2.7%, 71.2% 16%, 62% 0%, 4% 0%, 4% 24%, 2.5% 26.6%, 2.4% 49%, 4% 52%, 3.9% 90%, 7.4% 97%, 19% 97%, 20.7% 100%, 74.6% 100%, 76.5% 97%, 96.2% 97%, 96.2% 31%, 97.7% 28.6%, 97.6% 12.7%, 86% -9%, 80% 2.6%); clip-path: polygon(57% 2.7%, 71.2% 16%, 62% 0%, 4% 0%, 4% 24%, 2.5% 26.6%, 2.4% 49%, 4% 52%, 3.9% 90%, 7.4% 97%, 19% 97%, 20.7% 100%, 74.6% 100%, 76.5% 97%, 96.2% 97%, 96.2% 31%, 97.7% 28.6%, 97.6% 12.7%, 86% -9%, 80% 2.6%); }
+#map, #map2, #map3, .map-cont { width: 100%; height: 92.2%; margin-top: 17px; z-index: 99; position: relative; -webkit-clip-path: polygon(57% 2.7%, 71.2% 16%, 62% 0%, 4% 0%, 4% 24%, 2.5% 26.6%, 2.4% 49%, 4% 52%, 3.9% 90%, 7.4% 97%, 19% 97%, 20.7% 100%, 74.6% 100%, 76.5% 97%, 96.2% 97%, 96.2% 31%, 97.7% 28.6%, 97.6% 12.7%, 86% -9%, 80% 2.6%); clip-path: polygon(57% 2.7%, 71.2% 16%, 62% 0%, 4% 0%, 4% 24%, 2.5% 26.6%, 2.4% 49%, 4% 52%, 3.9% 90%, 7.4% 97%, 19% 97%, 20.7% 100%, 74.6% 100%, 76.5% 97%, 96.2% 97%, 96.2% 31%, 97.7% 28.6%, 97.6% 12.7%, 86% -9%, 80% 2.6%); }
 
 .main-block__map, .contacts-club-address .club-address__item-img { position: relative; overflow: hidden; -webkit-filter: drop-shadow(0px 0px 1px #11CFE7); filter: drop-shadow(0px 0px 1px #11CFE7); }
 
@@ -1688,7 +1708,7 @@ a.link:hover { border-color: transparent; }
 
 .contacts-club-address .club-address__item-img:after { top: -21px; width: 100%; height: 106.5%; }
 
-#map2, #map3 { height: 661px; margin-top: 2px; margin-bottom: 10px; }
+#map2, #map3, .map-cont { height: 661px; margin-top: 2px; margin-bottom: 10px; }
 
 .fancybox-skin { background-color: transparent; -webkit-box-shadow: none !important; box-shadow: none !important; }
 
@@ -2094,7 +2114,7 @@ a.link:hover { border-color: transparent; }
   .club-address__item-detail ul .club-address__item-detail-text { margin-left: 0; }
   .main-block__club-single .main-block__wrap .main-block__map { height: 300px; }
   #map { margin-top: 10px; }
-  #map2, #map3 { height: 280px; }
+  #map2, #map3, .map-cont { height: 280px; }
   .club-address__item-img:after { top: -8px; width: 100%; height: 104.3%; }
   .icon-marker:before { display: block; -webkit-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8); }
   .contact-form-success.active { max-width: 77%; }

@@ -1,5 +1,5 @@
 <?php $s = get_field('main'); ?>
-<div class="main-block main-block__inner">
+<div class="main-block main-block__inner<?= ( is_page(402) ? ' main-block__library' : '' ); ?>">
 	<div class="main-block__box js-img" data-src="<?= $s['bg_img']['url']; ?>">
 		<div class="wrapper">
 			<div class="main-block__info">
